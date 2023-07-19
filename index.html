@@ -3,7 +3,7 @@
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({ id: "3F3zOm26lhAscVh7", ck: "3F3zOm26lhAscVh7" })</script>
 
-<html style="font-size: 12px;">
+<html>
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,14 +25,19 @@
 	<meta name="renderer" content="webkit">
 	<link rel="stylesheet" type="text/css" href="new.css">
 	<link href="https://cdn.bootcdn.net/ajax/libs/vant/2.12.33/index.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://bilibili1.oss-cn-shenzhen.aliyuncs.com/css/vant.min.css">
 	<style type="text/css" id="import-css-str-theme">
-		* {
-			margin: 0;
-			padding: 0;
-		}
-
 		body {
 			background-color: #181818
+		}
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		.fullscreen {
+			width: 100%;
 		}
 
 		:root {
@@ -112,7 +117,6 @@
 		.fbc_authCodeInput.is_focus {
 			border-color: #181818
 		}
-
 
 		.fbc_authCodeInput.is_focus .fbc_aciTitle {
 			border-color: rgba(24, 24, 24, 0.3)
@@ -405,11 +409,6 @@
 		.body_appointmentWrapper {
 			background-color: #181818
 		}
-
-
-		.myerweima {
-			width: 100%;
-		}
 	</style>
 	<style>
 		* {
@@ -418,12 +417,9 @@
 		}
 
 		html {
-			box-sizing: border-box;
 			color: white;
 			background-color: black;
-			/* overflow: hidden; */
-			overflow-x: hidden;
-
+			padding: 20px 0
 		}
 
 		.alltupian {
@@ -432,6 +428,21 @@
 
 		img {
 			display: block !important;
+		}
+
+
+		.centerIt {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.centerItColumn {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
 		}
 	</style>
 	<style type="text/css">
@@ -820,32 +831,14 @@
 			font-size: .3rem;
 			font-weight: bold;
 		}
-
-		.centerIt {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.centerItColumn {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			z-index: 9999;
-		}
-
-
+	</style>
+	<style>
 		.hideTanChuang {
 			display: none;
 		}
 
-		body {
-			background-color: #000;
-		}
-
-		.fullscreen {
-			width: 100%;
+		html {
+			padding: 0;
 		}
 	</style>
 </head>
@@ -862,6 +855,64 @@
 	<img class="fullscreen"
 		src="https://article.biliimg.com/bfs/article/b6b1129216d7b749c735738f1251cf8e4291bf54.png" />
 
+
+	<div class="wrapin">
+		<form action="" method="get">
+			<ul class="orm">
+				<li class="shou">
+					<h3><i>*</i>手机号</h3>
+					<h4>
+						领取通知短信将发送至此手机号上
+					</h4>
+					<input type="tel" name="tel" v-model="phone" id="tel" placeholder="请输入正确的手机号" />
+				<li class="shou2">
+					<h3><i>*</i>快手极速版ID</h3>
+					<h4>在快手极速版右下角-我-查看(昵称下面的快手号)复制即可</h4>
+					<input type="text" name="" id="" value="" placeholder="输入快手极速版ID，注意不是昵称" />
+				</li>
+				<li class="dan">
+					<h3><i>*</i>礼包未到账之前请勿卸载快手极速版APP或者注销账号，否则视为放弃领取。</h3>
+					<div class="rbg">
+					</div>
+				</li>
+				<li class="dan">
+					<h3><i>*</i>提交的手机号仅用于本次短信通知(可退订)，无任何其它用途，提交即表示您愿意接受本次短信通知。</h3>
+					<div class="rbg">
+					</div>
+				</li>
+				<div class="clear">
+
+				</div>
+			</ul>
+			<button type="button" class="button aaaaa" onclick="showDialog()">提交</button>
+		</form>
+	</div>
+
+
+	<!--弹出-->
+	<div class="tanchu centerItColumn hideTanChuang" id="weiyitanchuang">
+		<div class="centerIt">
+			<img src="https://bilibili1.oss-cn-shenzhen.aliyuncs.com/css/gou.png">
+		</div>
+		<h3>提交成功</h3>
+		<p>请注意查收手机通知短信</p>
+		<br>
+		<div class="centerIt" onclick="hideDialog()"><img
+				src="https://bilibili1.oss-cn-shenzhen.aliyuncs.com/css/chacha.png"></div>
+	</div>
+
+	<script>
+		const weiyitanchuangDOM = document.getElementById('weiyitanchuang');
+
+		function showDialog() {
+			console.log('file lxh weiyitanchuangDOM', weiyitanchuangDOM);
+			weiyitanchuangDOM.style.display = 'block';
+		}
+
+		function hideDialog() {
+			weiyitanchuangDOM.style.display = 'none ';
+		}
+	</script>
 
 </body>
 
